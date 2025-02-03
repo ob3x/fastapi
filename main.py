@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 import requests as r
 
 app = FastAPI()
-API_KEY = ""
+API_KEY = "8d75801b383e7e0ede90b7c71ffe9c75"
 
 @app.get("/weather/{city}")
 def fetch_weather_data(city: str):
