@@ -17,6 +17,14 @@ class Book(BaseModel):
 def book_list():
     return {"Lista książek" : books}
 
+@app.get("/book/{id}")
+def get_book(id: int):
+    for book in books:
+        if book.id == id:
+            return {f"Book nr {id}" : book}
+            
+    return {f"Book nr {id}" : "Doesnt exist"}
+
 
 @app.post("/add-book/")
 def add_book(book : Book):
@@ -60,7 +68,7 @@ def return_book(id : int):
 
 
 @app.get("/borrow-history/")
-def borrow_history():
+def borrow_history(): 
     borrowed_books = [book for book in books if not book.status]
 
     return {"List of borrowed books" : borrowed_books}
