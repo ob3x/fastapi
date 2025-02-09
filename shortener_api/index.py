@@ -2,13 +2,12 @@ from fastapi import FastAPI
 import string
 import random
 import json
+import uvicorn
 
 app = FastAPI()
 
 links = []
 letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
-
-
 
 
 def send_to_datebase():
@@ -49,3 +48,7 @@ def use_link(short_link: str):
             return {"Your url": element["url"]}
     
     return {"Error": "Link not found"}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app)
